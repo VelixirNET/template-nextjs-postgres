@@ -1,0 +1,14 @@
+# Read by Nixpacks, which builds this app on velixir. It finds package.json and runs npm ci and
+# npm run build by itself; these two settings are all this app adds.
+
+[variables]
+# Next.js sends anonymous usage data to Vercel unless told not to. Variables set here apply to
+# the build and to the running app.
+NEXT_TELEMETRY_DISABLED = "1"
+
+[start]
+# The same as `npm start`, minus npm. Started through npm, the stop signal sent on every
+# redeploy (and every Free-plan sleep) reaches npm instead of Next.js, so requests in flight are
+# cut off and the log fills with npm errors. Started directly, Next.js finishes them and exits
+# cleanly, and npm is not kept in memory beside it.
+cmd = "node node_modules/next/dist/bin/next start -H 0.0.0.0"

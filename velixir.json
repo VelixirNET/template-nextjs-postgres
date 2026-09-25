@@ -1,0 +1,14 @@
+{
+  "name": "Next.js + Postgres",
+  "tagline": "A Next.js 15 guestbook on managed Postgres, with Server Actions.",
+  "description": "Sign the guestbook and your entry appears at once: Next.js 15 with the App Router, React 19 and TypeScript, a Server Action for the write, and managed Postgres behind it. It builds without a database, connects over velixir's TLS the way node-postgres needs, and shows a setup page instead of crashing when no database is bound. Deploying it creates a managed Postgres and connects it for you.",
+  "language": "Node",
+  "runtimeVersion": "22",
+  "accent": "#EDEDED",
+  "tags": ["Next.js", "Managed Postgres", "Server Actions"],
+  "topics": ["nextjs", "react", "postgres", "typescript", "server-actions"],
+  "minMemoryMb": 256,
+  "services": {
+    "postgres": { "env": "DATABASE_URL" }
+  }
+}
