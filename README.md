@@ -75,11 +75,11 @@ protection. Add sign-in or a moderation step before you share the address widely
 fine for one table and one replica. Scale past one replica and several instances race the same
 migration on every deploy. Move to a real migration step before that happens.
 
-**The certificate is not verified.** The connection is encrypted, but `lib/db.ts` does not check
-who issued the certificate, which matches what `sslmode=require` means everywhere else. The
-traffic never leaves velixir's private network, and the platform CA is not published, so there
-is nothing to pin yet. If you point the app at a database whose CA you do have, use
-`sslmode=verify-full` with the `ca` option and `lib/db.ts` leaves it alone.
+**The certificate is not verified by default.** The connection is encrypted, but `lib/db.ts` does not check
+who issued the certificate, which matches what `sslmode=require` means everywhere else. To verify the
+server as well, download your database's CA certificate from its page in the velixir dashboard
+and connect with `sslmode=verify-full` and the `ca` option, which `lib/db.ts` leaves alone. See
+https://velixir.net/docs/databases#verifying-the-server-certificate.
 
 **Nothing is kept on disk.** The container's filesystem is wiped on every redeploy and restart,
 so Next.js's own cache starts empty each time, and anything you add that stores files (uploads,
